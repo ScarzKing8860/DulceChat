@@ -349,6 +349,22 @@
                 <a href="index.html">← Back to Studio</a>
                 <a href="dashboard.html">📊 Dashboard</a>
                 <a href="browser.html">🌐 Browser</a>
+                <a href="settings.html">⚙️ Settings</a>
+                <div class="dropdown menu" style="position: relative;">
+                    <button class="dropdown-toggle" style="background: none; border: none; color: #d8eaff; font-size: 0.95rem; padding: 10px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer;">More ▾</button>
+                    <div class="dropdown-menu" style="position: absolute; top: 100%; right: 0; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 8px 0; display: none; min-width: 160px;">
+                        <form id="importProfileForm" style="display: block; padding: 10px 16px; color: #d8eaff; text-decoration: none; cursor: pointer;">
+                            <label for="importProfileInput" style="cursor: pointer;">📁 Import Profile</label>
+                            <input type="file" id="importProfileInput" accept=".json" style="display: none;" />
+                        </form>
+                        <form id="signup" style="display: block; padding: 10px 16px; color: #d8eaff; text-decoration: none; cursor: pointer;">
+                            <label for="signupInput" style="cursor: pointer;">👥 Join Community</label>
+                            <input type="email" id="signupInput" placeholder="Enter your email" style="display: none;" />
+                        </form>
+                        <a href="help.html" style="display: block; padding: 10px 16px; color: #d8eaff; text-decoration: none;">❓ Help Center</a>
+                        <a href="feedback.html" style="display: block; padding: 10px 16px; color: #d8eaff; text-decoration: none;">💬 Send Feedback</a>
+                        <a href="about.html" style="display: block; padding: 10px 16px; color: #d8eaff; text-decoration: none;">ℹ️ About DulceChat</a>
+                    </div>
             </nav>
         </header>
 

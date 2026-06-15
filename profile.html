@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DulceChat Profile</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* ========== PROFILE-SPECIFIC STYLES ========== */
+        .profile-shell {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f1426 0%, #1a2a4a 50%, #0f1426 100%);
+        }
+
+        .profile-header {
+            padding: 28px 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff89dc, #79c0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-nav {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .profile-nav a {
+            color: #d8eaff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .profile-nav a:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-content {
+            padding: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            padding: 32px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-bottom: 24px;
+        }
+
+        .profile-avatar-section {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff89dc, #79c0ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 8px 32px rgba(255, 137, 220, 0.2);
+        }
+
+        .profile-avatar-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #e6f1ff;
+            margin: 0 0 8px 0;
+        }
+
+        .profile-avatar-role {
+            font-size: 0.95rem;
+            color: #9bb2d6;
+            margin: 0 0 16px 0;
+        }
+
+        .profile-avatar-bio {
+            font-size: 0.95rem;
+            color: #cad9f5;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .form-section {
+            margin-bottom: 28px;
+        }
+
+        .form-section h3 {
+            margin: 0 0 16px 0;
+            font-size: 1.1rem;
+            color: #e6f1ff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d8eaff;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ebf4ff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(255, 137, 220, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .profile-stat-item {
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .profile-stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff89dc;
+            margin: 0 0 4px 0;
+        }
+
+        .profile-stat-label {
+            font-size: 0.85rem;
+            color: #9bb2d6;
+            margin: 0;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .theme-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .theme-option input {
+            display: none;
+        }
+
+        .theme-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .theme-option input:checked + .theme-label {
+            border-color: #ff89dc;
+            box-shadow: 0 0 16px rgba(255, 137, 220, 0.3);
+        }
+
+        .theme-dark .theme-label {
+            background: linear-gradient(135deg, #1a2a4a, #0f1426);
+            color: #d8eaff;
+        }
+
+        .theme-light .theme-label {
+            background: linear-gradient(135deg, #f0f7ff, #e8f1ff);
+            color: #0f1426;
+        }
+
+        .theme-ocean .theme-label {
+            background: linear-gradient(135deg, #0a3d62, #0c5aa6);
+            color: #ffffff;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .btn-save {
+            padding: 12px 24px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #ff89dc, #ff67b4);
+            border: none;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 137, 220, 0.3);
+        }
+
+        .btn-cancel {
+            padding: 12px 24px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #d8eaff;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-cancel:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .status-message {
+            padding: 14px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .status-message.success {
+            background: rgba(99, 204, 109, 0.12);
+            border: 1px solid rgba(99, 204, 109, 0.25);
+            color: #c5ffd5;
+            display: block;
+        }
+
+        .status-message.error {
+            background: rgba(255, 109, 109, 0.12);
+            border: 1px solid rgba(255, 109, 109, 0.25);
+            color: #ffd3d3;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .profile-content {
+                padding: 16px;
+            }
+
+            .profile-card {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-nav {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn-save,
+            .btn-cancel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-shell">
+        <!-- ========== PROFILE HEADER ========== -->
+        <header class="profile-header">
+            <div>
+                <h1>👤 Profile</h1>
+            </div>
+            <nav class="profile-nav">
+                <a href="index.html">← Back to Studio</a>
+                <a href="dashboard.html">📊 Dashboard</a>
+            </nav>
+        </header>
+
+        <!-- ========== PROFILE CONTENT ========== -->
+        <main class="profile-content">
+            <!-- STATUS MESSAGE -->
+            <div class="status-message" id="statusMessage"></div>
+
+            <!-- PROFILE CARD -->
+            <div class="profile-card">
+                <!-- AVATAR & BASIC INFO -->
+                <div class="profile-avatar-section">
+                    <div class="profile-avatar" id="profileAvatar">🎥</div>
+                    <p class="profile-avatar-name" id="profileNameDisplay">Streamer</p>
+                    <p class="profile-avatar-role">DulceChat Creator</p>
+                    <p class="profile-avatar-bio" id="profileBioDisplay">No bio set yet</p>
+                </div>
+
+                <!-- PROFILE STATS -->
+                <div class="profile-stats">
+                    <div class="profile-stat-item">
+                        <p class="profile-stat-value" id="profileRosesCount">0</p>
+                        <p class="profile-stat-label">Total Roses</p>
+                    </div>
+                    <div class="profile-stat-item">
+                        <p class="profile-stat-value" id="profileTipsCount">0</p>
+                        <p class="profile-stat-label">Tips Received</p>
+                    </div>
+                    <div class="profile-stat-item">
+                        <p class="profile-stat-value" id="profileSnapshotsCount">0</p>
+                        <p class="profile-stat-label">Snapshots</p>
+                    </div>
+                    <div class="profile-stat-item">
+                        <p class="profile-stat-value" id="profileJoinDate">Today</p>
+                        <p class="profile-stat-label">Joined</p>
+                    </div>
+                </div>
+
+                <!-- EDIT FORM -->
+                <form id="profileForm">
+                    <!-- PERSONAL INFO SECTION -->
+                    <div class="form-section">
+                        <h3>Personal Information</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="displayName">Display Name</label>
+                                <input type="text" id="displayName" placeholder="Your streaming name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" placeholder="@username" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profileBio">Bio</label>
+                            <textarea id="profileBio" placeholder="Tell your viewers about yourself..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- STREAMING SETTINGS -->
+                    <div class="form-section">
+                        <h3>Streaming Settings</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="defaultChatUrl">Default Chat Server URL</label>
+                                <input type="text" id="defaultChatUrl" placeholder="ws://localhost:8080" />
+                            </div>
+                            <div class="form-group">
+                                <label for="defaultTipAmount">Default Tip Amount</label>
+                                <input type="number" id="defaultTipAmount" placeholder="10" min="1" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="autoStartCamera">Auto-start Camera on Load</label>
+                            <input type="checkbox" id="autoStartCamera" style="width: auto; cursor: pointer; margin-top: 8px;" />
+                        </div>
+                    </div>
+
+                    <!-- APPEARANCE SETTINGS -->
+                    <div class="form-section">
+                        <h3>Appearance</h3>
+
+                        <div class="form-group">
+                            <label>Theme Preference</label>
+                            <div class="theme-grid">
+                                <div class="theme-option theme-dark">
+                                    <input type="radio" id="themeDark" name="theme" value="dark" checked />
+                                    <label for="themeDark" class="theme-label">Dark</label>
+                                </div>
+                                <div class="theme-option theme-light">
+                                    <input type="radio" id="themeLight" name="theme" value="light" />
+                                    <label for="themeLight" class="theme-label">Light</label>
+                                </div>
+                                <div class="theme-option theme-ocean">
+                                    <input type="radio" id="themeOcean" name="theme" value="ocean" />
+                                    <label for="themeOcean" class="theme-label">Ocean</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTION BUTTONS -->
+                    <div class="button-group">
+                        <button type="submit" class="btn-save">Save Profile</button>
+                        <button type="reset" class="btn-cancel">Reset Changes</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ACCOUNT MANAGEMENT CARD -->
+            <div class="profile-card">
+                <h2 style="margin: 0 0 20px 0; color: #e6f1ff;">Account & Privacy</h2>
+
+                <div class="form-group">
+                    <label for="exportData">Export My Data</label>
+                    <button type="button" id="exportDataBtn" class="btn-save" style="width: 100%; margin-top: 8px;">Download Profile Data</button>
+                </div>
+
+                <div class="form-group" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+                    <label>Danger Zone</label>
+                    <button type="button" id="deleteAccountBtn" class="btn-cancel" style="width: 100%; background: rgba(255, 109, 109, 0.12); border-color: rgba(255, 109, 109, 0.25); color: #ffd3d3; margin-top: 8px;">Delete Account</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // ========== PROFILE LOGIC ==========
+
+        const form = document.getElementById('profileForm');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // Load profile data
+        function loadProfile() {
+            const profile = JSON.parse(localStorage.getItem('dulcechat_profile') || '{}');
+            
+            // Update display
+            document.getElementById('profileNameDisplay').textContent = profile.displayName || 'Streamer';
+            document.getElementById('profileBioDisplay').textContent = profile.bio || 'No bio set yet';
+            
+            // Update form fields
+            document.getElementById('displayName').value = profile.displayName || '';
+            document.getElementById('username').value = profile.username || '';
+            document.getElementById('profileBio').value = profile.bio || '';
+            document.getElementById('defaultChatUrl').value = profile.defaultChatUrl || '';
+            document.getElementById('defaultTipAmount').value = profile.defaultTipAmount || '10';
+            document.getElementById('autoStartCamera').checked = profile.autoStartCamera || false;
+            
+            // Theme
+            if (profile.theme) {
+                document.getElementById(`theme${profile.theme.charAt(0).toUpperCase() + profile.theme.slice(1)}`).checked = true;
+            }
+            
+            // Load stats
+            const accounts = JSON.parse(localStorage.getItem('dulcechat_accounts') || '{}');
+            const tipHistory = JSON.parse(localStorage.getItem('dulcechat_tip_history') || '[]');
+            const snapshotData = JSON.parse(localStorage.getItem('dulcechat_snapshots') || '{"count": 0}');
+            
+            let totalRoses = 0;
+            Object.values(accounts).forEach(acc => {
+                totalRoses += acc.roses || 0;
+            });
+            const singleRoses = parseInt(localStorage.getItem('dulcechat_roses') || '0');
+            totalRoses = Math.max(totalRoses, singleRoses);
+            
+            document.getElementById('profileRosesCount').textContent = totalRoses;
+            document.getElementById('profileTipsCount').textContent = tipHistory.length;
+            document.getElementById('profileSnapshotsCount').textContent = snapshotData.count || 0;
+            
+            // Join date
+            const sessionStart = localStorage.getItem('dulcechat_session_start');
+            if (sessionStart) {
+                const joinDate = new Date(sessionStart);
+                document.getElementById('profileJoinDate').textContent = joinDate.toLocaleDateString();
+            }
+        }
+
+        // Save profile data
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const profile = {
+                displayName: document.getElementById('displayName').value || 'Streamer',
+                username: document.getElementById('username').value,
+                bio: document.getElementById('profileBio').value,
+                defaultChatUrl: document.getElementById('defaultChatUrl').value,
+                defaultTipAmount: parseInt(document.getElementById('defaultTipAmount').value) || 10,
+                autoStartCamera: document.getElementById('autoStartCamera').checked,
+                theme: document.querySelector('input[name="theme"]:checked')?.value || 'dark',
+                updatedAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('dulcechat_profile', JSON.stringify(profile));
+            
+            // Show success message
+            statusMessage.className = 'status-message success';
+            statusMessage.textContent = '✓ Profile saved successfully';
+            setTimeout(() => {
+                statusMessage.classList.remove('success');
+            }, 3000);
+            
+            loadProfile();
+        });
+
+        // Export data
+        document.getElementById('exportDataBtn').addEventListener('click', () => {
+            const profile = JSON.parse(localStorage.getItem('dulcechat_profile') || '{}');
+            const accounts = JSON.parse(localStorage.getItem('dulcechat_accounts') || '{}');
+            const tipHistory = JSON.parse(localStorage.getItem('dulcechat_tip_history') || '[]');
+            const chatLog = JSON.parse(localStorage.getItem('dulcechat_chat_log') || '[]');
+            
+            const exportData = {
+                profile,
+                accounts,
+                tipHistory,
+                chatLog,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `dulcechat-profile-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Delete account
+        document.getElementById('deleteAccountBtn').addEventListener('click', () => {
+            if (confirm('Are you sure? This will delete your profile and all associated data. This cannot be undone.')) {
+                if (confirm('Last warning: this will permanently delete everything. Continue?')) {
+                    localStorage.clear();
+                    alert('Profile deleted. Returning to studio...');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Load on page load
+        window.addEventListener('load', loadProfile);
+    </script>
+</body>
+</html>

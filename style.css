@@ -1,0 +1,663 @@
+* {
+    box-sizing: border-box;
+}
+
+/* ========== GLOBAL STYLES ========== */
+:root {
+    color-scheme: dark;
+    color: #f4f7fb;
+    background: #0d111c;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+}
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at top left, rgba(73, 168, 255, 0.14), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(84, 211, 255, 0.12), transparent 25%),
+        linear-gradient(180deg, #070b16 0%, #0d111c 100%);
+}
+
+body {
+    padding: 24px;
+}
+
+.app-shell {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ========== TOPBAR / HEADER ========== */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(16px);
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.account-selector {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.account-select {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: #ebf4ff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    min-width: 160px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: #7a8ca8;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+}
+
+.status-pill {
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid rgba(84, 211, 255, 0.24);
+    background: rgba(84, 211, 255, 0.12);
+    color: #b9f5ff;
+    font-weight: 600;
+    min-width: 110px;
+    text-align: center;
+}
+
+/* ========== MAIN LAYOUT: GRID ========== */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 24px;
+}
+
+/* ========== PANELS & CARDS ========== */
+.panel,
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.18);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.panel-label {
+    margin: 0 0 8px;
+    color: #7a8ca8;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.panel h2,
+.card h3 {
+    margin: 0;
+}
+
+.badge {
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    background: rgba(105, 234, 255, 0.16);
+    color: #9be7ff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.video-frame {
+    position: relative;
+    min-height: 420px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(46, 64, 101, 0.35), #0b1120 65%);
+    display: grid;
+    place-items: center;
+}
+
+video#webcam {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.video-fallback {
+    text-align: center;
+    color: #c8d7f2;
+    padding: 2rem;
+}
+
+.video-fallback p {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    border: none;
+    border-radius: 14px;
+    padding: 14px 20px;
+    min-width: 140px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #56b2ff;
+    color: #0b1320;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e6f1ff;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-accent {
+    background: #7c3aed;
+    color: #fff;
+}
+
+/* ========== CAMERA INFO & SNAPSHOTS ========== */
+.quick-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.quick-info div {
+    flex: 1;
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.quick-info span {
+    display: block;
+    color: #7f96b4;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.quick-info strong {
+    display: block;
+    font-size: 1.1rem;
+}
+
+.snapshots {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.snapshot-empty,
+.snapshot-item {
+    min-height: 140px;
+    border-radius: 20px;
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    color: #9bb2d6;
+    padding: 18px;
+}
+
+.snapshot-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+}
+
+/* ========== SIDEBAR CARDS ========== */
+.sidebar-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    padding: 22px;
+}
+
+.small-card {
+    padding: 20px;
+}
+
+.info-card ul {
+    margin: 16px 0 0;
+    padding-left: 20px;
+}
+
+.info-card li {
+    margin-bottom: 10px;
+    color: #cad9f5;
+}
+
+.chat-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.chat-preview p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.chat-preview span {
+    color: #79c0ff;
+    font-weight: 700;
+}
+
+.chat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.chat-status {
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    color: #d8eaff;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.chat-feed {
+    margin-top: 16px;
+    min-height: 160px;
+    max-height: 240px;
+    overflow-y: auto;
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: grid;
+    gap: 10px;
+}
+
+.chat-message {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.chat-message span {
+    color: #79c0ff;
+    font-weight: 700;
+}
+
+.chat-message.system {
+    color: #cad9f5;
+    font-style: italic;
+}
+
+.chat-message.outgoing {
+    justify-content: flex-end;
+    background: rgba(82, 204, 163, 0.12);
+    border-color: rgba(82, 204, 163, 0.25);
+}
+
+.chat-message.outgoing span {
+    color: #9bd89d;
+}
+
+.chat-input-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.chat-input-row .tip-input {
+    margin: 0;
+}
+
+.chat-url-row {
+    margin-top: 12px;
+}
+
+.chat-url-row .tip-input {
+    width: 100%;
+}
+
+.chat-card {
+    background: rgba(73, 85, 143, 0.88);
+    border-color: rgba(95, 124, 255, 0.16);
+}
+
+.muted {
+    color: #7b8ea7;
+}
+
+.action-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.token-card {
+    background: rgba(94, 79, 255, 0.1);
+    border-color: rgba(126, 79, 255, 0.18);
+}
+
+.token-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.token-summary p {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.token-summary small {
+    color: #9bb2d6;
+}
+
+.tip-card {
+    background: rgba(221, 181, 255, 0.08);
+    border-color: rgba(190, 133, 255, 0.2);
+}
+
+.tip-fields {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.tip-input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: #ebf4ff;
+}
+
+.tip-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tip-log {
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    min-height: 72px;
+}
+
+.tip-log p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.account-section {
+    margin-bottom: 20px;
+}
+
+.account-section h4 {
+    margin: 0 0 12px 0;
+    color: #e6f1ff;
+}
+
+.account-fields {
+    display: grid;
+    gap: 12px;
+}
+
+.account-list {
+    display: grid;
+    gap: 12px;
+}
+
+.account-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.account-info {
+    flex: 1;
+}
+
+.account-name {
+    margin: 0 0 4px 0;
+    font-weight: 700;
+    color: #ebf4ff;
+}
+
+.account-roses {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #a9bedc;
+}
+
+.account-action-btn {
+    min-width: 80px;
+}
+
+.note-card {
+    background: linear-gradient(180deg, rgba(46, 55, 90, 0.95), rgba(26, 36, 59, 0.95));
+}
+
+/* Modal styles for Redeem dialog */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+
+.modal[aria-hidden="false"] {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 6, 12, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+.modal-content {
+    position: relative;
+    width: min(720px, 94%);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 18px;
+    z-index: 2;
+}
+
+.modal-content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: #cfefff;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-top: 12px;
+}
+
+.redeem-options {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.redeem-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.redeem-option h4 {
+    margin: 0 0 6px 0;
+}
+
+.redeem-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: rgba(40,40,60,0.96);
+    color: #eaf6ff;
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    z-index: 1300;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== VISUAL EFFECTS ========== */
+.confetti-piece {
+    position: fixed;
+    width: 12px;
+    height: 18px;
+    opacity: 0.95;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 1400;
+    will-change: transform, opacity;
+}
+
+/* ========== FOOTER ========== */
+.footer-bar {
+    padding: 20px 24px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    color: #a9bedc;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 980px) {
+    .layout-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 680px) {
+    body {
+        padding: 16px;
+    }
+    .topbar,
+    .panel,
+    .card,
+    .footer-bar {
+        padding: 18px;
+    }
+    .controls-row {
+        flex-direction: column;
+    }
+}

@@ -11,6 +11,21 @@ function setTheme(theme) {
   applyTheme(theme);
 }
 
+function initViewerCounter() {
+  const viewerLabel = document.getElementById('viewerCount');
+  if (!viewerLabel) return;
+
+  let viewers = 1842;
+  const tick = () => {
+    const delta = Math.random() > 0.5 ? 1 : -1;
+    viewers = Math.max(1480, viewers + delta);
+    viewerLabel.textContent = `${viewers.toLocaleString()} watching`;
+  };
+
+  tick();
+  window.setInterval(tick, 3500);
+}
+
 function initThemeSwitcher() {
   const savedTheme = localStorage.getItem('dulcechat_theme') || 'dark';
   applyTheme(savedTheme);
@@ -22,5 +37,8 @@ function initThemeSwitcher() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', initThemeSwitcher);
+document.addEventListener('DOMContentLoaded', () => {
+  initThemeSwitcher();
+  initViewerCounter();
+});
 window.setTheme = setTheme;

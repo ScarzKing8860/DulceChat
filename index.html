@@ -45,15 +45,29 @@
                         <p class="panel-label">Streaming Preview</p>
                         <h2>Camera Feed</h2>
                     </div>
-                    <span class="badge">Webcam Mode</span>
+                    <div class="live-pill-group">
+                        <span class="badge live-badge">● LIVE</span>
+                        <span class="viewer-pill" id="viewerCount">1,842 watching</span>
+                    </div>
                 </div>
 
-                <div class="video-frame">
+                <div class="video-frame" id="videoFrame">
                     <video id="webcam" autoplay muted></video>
                     <div class="video-fallback" id="fallbackMessage">
                         <p>Waiting for camera access...</p>
                         <small>Allow webcam permission to start the preview.</small>
                     </div>
+                    <div class="stream-overlay">
+                        <span class="stream-tag">Hot Room</span>
+                        <h3>Private show • tip-driven energy</h3>
+                        <p>Keep the room lively with fast chat reactions and instant rewards.</p>
+                    </div>
+                </div>
+
+                <div class="stream-chips">
+                    <span class="chip">#LiveNow</span>
+                    <span class="chip">#Interactive</span>
+                    <span class="chip">#TipGoals</span>
                 </div>
 
                 <div class="controls-row">
@@ -90,13 +104,40 @@
                 </div>
 
                 <div class="card info-card">
-                    <h3>Broadcast Info</h3>
-                    <p>Keep your feed crisp and your settings ready. Use the chat preview and camera controls below.</p>
+                    <h3>Room Vibe</h3>
+                    <p>Keep the room energetic with bright lighting, fast chat replies, and clear reward moments.</p>
                     <ul>
                         <li>Recommended: 1080p @ 30fps</li>
                         <li>Lighting: soft and even</li>
                         <li>Background: clean and minimal</li>
                     </ul>
+                </div>
+
+                <div class="card small-card">
+                    <h3>Live Rooms</h3>
+                    <div class="room-list">
+                        <div class="room-item">
+                            <div>
+                                <strong>Studio Glow</strong>
+                                <p>Live • 2.3K viewers</p>
+                            </div>
+                            <span class="room-badge">Hot</span>
+                        </div>
+                        <div class="room-item">
+                            <div>
+                                <strong>Night Pulse</strong>
+                                <p>Live • 1.8K viewers</p>
+                            </div>
+                            <span class="room-badge">New</span>
+                        </div>
+                        <div class="room-item">
+                            <div>
+                                <strong>Tip Arena</strong>
+                                <p>Live • 3.1K viewers</p>
+                            </div>
+                            <span class="room-badge">Trending</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card small-card chat-card">

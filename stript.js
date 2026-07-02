@@ -7,6 +7,7 @@ const buttonToggleMirror = document.getElementById("buttonToggleMirror");
 const buttonAddRoses = document.getElementById("buttonAddRoses");
 const fallbackMessage = document.getElementById("fallbackMessage");
 const statusLabel = document.getElementById("connectionStatus");
+const videoFrame = document.getElementById("videoFrame");
 const cameraResolution = document.getElementById("cameraResolution");
 const cameraFramerate = document.getElementById("cameraFramerate");
 const rosesCountLabel = document.getElementById("rosesCount");
@@ -164,6 +165,11 @@ function closeAccountModal() {
 
 // ========== WEBCAM / CAMERA FUNCTIONS ==========
 
+async function setVideoFrameLive(isLive) {
+    if (!videoFrame) return;
+    videoFrame.classList.toggle('is-live', isLive);
+}
+
 async function startCamera() {
     try {
         stream = await navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, frameRate: { ideal: 30 } }, audio: false });
@@ -173,6 +179,7 @@ async function startCamera() {
         buttonStop.disabled = false;
         buttonCapture.disabled = false;
         buttonStart.disabled = true;
+        setVideoFrameLive(true);
         statusLabel.textContent = "Live";
         statusLabel.style.background = "rgba(72, 187, 120, 0.16)";
         statusLabel.style.color = "#c6ffd4";
@@ -198,6 +205,7 @@ function stopCamera() {
     buttonStop.disabled = true;
     buttonCapture.disabled = true;
     buttonStart.disabled = false;
+    setVideoFrameLive(false);
     statusLabel.textContent = "Paused";
     statusLabel.style.background = "rgba(160, 160, 160, 0.16)";
     statusLabel.style.color = "#f0f7ff";

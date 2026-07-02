@@ -15,15 +15,23 @@
                 <h1>DulceChat Live</h1>
             </div>
             <div class="topbar-right">
-                <a href="profile.html" class="btn btn-secondary" style="text-decoration: none; display: inline-block;">👤 Profile</a>
-                <a href="dashboard.html" class="btn btn-secondary" style="text-decoration: none; display: inline-block;">📊 Dashboard</a>
-                <a href="browser.html" class="btn btn-secondary" style="text-decoration: none; display: inline-block;">🌐 Browser</a>
                 <div class="account-selector">
-                    <select id="accountSelect" class="account-select">
-                        <option value="">Select Account...</option>
+                    <select id="accountSelect" class="account-select" aria-label="Select account">
+                        <option value="">Select account...</option>
                     </select>
-                    <button class="btn btn-secondary" id="buttonAccountMenu" style="width: auto; min-width: 120px;">Accounts</button>
+                    <button class="btn btn-secondary" id="buttonAccountMenu" type="button">Manage Accounts</button>
                 </div>
+                <div class="theme-switcher" aria-label="Theme switcher">
+                    <button class="theme-btn active" type="button" data-theme="dark" aria-label="Dark theme">🌙</button>
+                    <button class="theme-btn" type="button" data-theme="light" aria-label="Light theme">☀️</button>
+                    <button class="theme-btn" type="button" data-theme="ocean" aria-label="Ocean theme">🌊</button>
+                    <button class="theme-btn" type="button" data-theme="sunset" aria-label="Sunset theme">🌅</button>
+                </div>
+                <a href="profile.html" class="btn btn-secondary topbar-nav-link">👤 Profile</a>
+                <a href="dashboard.html" class="btn btn-secondary topbar-nav-link">📊 Dashboard</a>
+                <a href="browser.html" class="btn btn-secondary topbar-nav-link">🌐 Browser</a>
+                <a href="settings.html" class="btn btn-secondary topbar-nav-link">⚙️ Settings</a>
+
                 <div class="status-pill" id="connectionStatus">Ready</div>
             </div>
         </header>
@@ -41,7 +49,7 @@
                 </div>
 
                 <div class="video-frame">
-                    <video id="webcam" autoplay playsinline muted></video>
+                    <video id="webcam" autoplay muted></video>
                     <div class="video-fallback" id="fallbackMessage">
                         <p>Waiting for camera access...</p>
                         <small>Allow webcam permission to start the preview.</small>
@@ -175,7 +183,7 @@
                     <h4>Create New Account</h4>
                     <div class="account-fields">
                         <input id="newAccountName" class="tip-input" type="text" placeholder="Enter account name" />
-                        <button class="btn btn-primary" id="buttonCreateAccount" style="width: 100%;">Create Account</button>
+                        <button class="btn btn-primary account-create-btn" id="buttonCreateAccount">Create Account</button>
                     </div>
                 </div>
 
@@ -241,5 +249,6 @@
         </div>
     </div>
     <script src="stript.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

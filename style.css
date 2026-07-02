@@ -9,6 +9,71 @@
     background: #0d111c;
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     line-height: 1.5;
+    --bg-page: radial-gradient(circle at top left, rgba(73, 168, 255, 0.14), transparent 28%), radial-gradient(circle at bottom right, rgba(84, 211, 255, 0.12), transparent 25%), linear-gradient(180deg, #070b16 0%, #0d111c 100%);
+    --bg-surface: rgba(255, 255, 255, 0.02);
+    --bg-surface-strong: rgba(255, 255, 255, 0.04);
+    --bg-surface-soft: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f4f7fb;
+    --text-secondary: #d8eaff;
+    --text-muted: #7a8ca8;
+    --btn-secondary-bg: rgba(255, 255, 255, 0.08);
+    --btn-secondary-text: #e6f1ff;
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --input-border: rgba(255, 255, 255, 0.12);
+    --shadow-color: rgba(0, 0, 0, 0.18);
+    --accent: #56b2ff;
+}
+
+body[data-theme="light"] {
+    --bg-page: linear-gradient(135deg, #f7fbff 0%, #e8f2ff 100%);
+    --bg-surface: rgba(255, 255, 255, 0.7);
+    --bg-surface-strong: rgba(255, 255, 255, 0.9);
+    --bg-surface-soft: rgba(255, 255, 255, 0.82);
+    --border-color: rgba(12, 29, 54, 0.12);
+    --text-primary: #14233d;
+    --text-secondary: #243b5a;
+    --text-muted: #64748b;
+    --btn-secondary-bg: rgba(12, 29, 54, 0.06);
+    --btn-secondary-text: #14233d;
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --input-border: rgba(12, 29, 54, 0.14);
+    --shadow-color: rgba(15, 23, 42, 0.08);
+    --accent: #2563eb;
+}
+
+body[data-theme="ocean"] {
+    --bg-page: linear-gradient(135deg, #071722 0%, #13324b 50%, #1f5e7a 100%);
+    --bg-surface: rgba(4, 20, 33, 0.7);
+    --bg-surface-strong: rgba(6, 28, 45, 0.9);
+    --bg-surface-soft: rgba(15, 45, 68, 0.78);
+    --border-color: rgba(146, 233, 255, 0.16);
+    --text-primary: #f2fcff;
+    --text-secondary: #d9f7ff;
+    --text-muted: #8fcfdd;
+    --btn-secondary-bg: rgba(255, 255, 255, 0.11);
+    --btn-secondary-text: #f2fcff;
+    --input-bg: rgba(6, 28, 45, 0.8);
+    --input-border: rgba(146, 233, 255, 0.18);
+    --shadow-color: rgba(0, 0, 0, 0.24);
+    --accent: #31d0ff;
+}
+
+body[data-theme="sunset"] {
+    --bg-page: linear-gradient(135deg, #24111d 0%, #4d2432 45%, #8a4b2d 100%);
+    --bg-surface: rgba(44, 20, 29, 0.72);
+    --bg-surface-strong: rgba(72, 33, 45, 0.9);
+    --bg-surface-soft: rgba(101, 44, 56, 0.8);
+    --border-color: rgba(255, 188, 130, 0.2);
+    --text-primary: #fff4eb;
+    --text-secondary: #ffe7d1;
+    --text-muted: #f2b68f;
+    --btn-secondary-bg: rgba(255, 255, 255, 0.12);
+    --btn-secondary-text: #fff4eb;
+    --input-bg: rgba(92, 41, 56, 0.8);
+    --input-border: rgba(255, 188, 130, 0.2);
+    --shadow-color: rgba(26, 8, 12, 0.32);
+    --accent: #ff8c61;
 }
 
 html,
@@ -16,13 +81,12 @@ body {
     min-height: 100%;
     margin: 0;
     padding: 0;
-    background: radial-gradient(circle at top left, rgba(73, 168, 255, 0.14), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(84, 211, 255, 0.12), transparent 25%),
-        linear-gradient(180deg, #070b16 0%, #0d111c 100%);
+    background: var(--bg-page);
 }
 
 body {
     padding: 24px;
+    color: var(--text-primary);
 }
 
 .app-shell {
@@ -40,9 +104,10 @@ body {
     align-items: center;
     gap: 16px;
     padding: 24px 28px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
     border-radius: 24px;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--bg-surface);
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
 }
 
@@ -50,6 +115,7 @@ body {
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .account-selector {
@@ -61,9 +127,9 @@ body {
 .account-select {
     padding: 10px 12px;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.05);
-    color: #ebf4ff;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-secondary);
     font-size: 0.95rem;
     cursor: pointer;
     min-width: 160px;
@@ -71,7 +137,7 @@ body {
 
 .eyebrow {
     margin: 0 0 8px;
-    color: #7a8ca8;
+    color: var(--text-muted);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-size: 0.78rem;
@@ -103,11 +169,11 @@ body {
 /* ========== PANELS & CARDS ========== */
 .panel,
 .card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--bg-surface-strong);
+    border: 1px solid var(--border-color);
     border-radius: 28px;
     padding: 24px;
-    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 20px 70px var(--shadow-color);
 }
 
 .panel-header {
@@ -202,14 +268,23 @@ video#webcam {
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.08);
-    color: #e6f1ff;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 1px solid var(--input-border);
 }
 
 .btn-accent {
     background: #7c3aed;
     color: #fff;
+}
+
+.topbar-nav-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.account-create-btn {
+    width: 100%;
 }
 
 /* ========== CAMERA INFO & SNAPSHOTS ========== */
@@ -332,8 +407,8 @@ video#webcam {
     overflow-y: auto;
     padding: 14px;
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-surface-soft);
+    border: 1px solid var(--border-color);
     display: grid;
     gap: 10px;
 }
@@ -414,8 +489,8 @@ video#webcam {
     margin-top: 14px;
     padding: 16px;
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-surface-soft);
+    border: 1px solid var(--border-color);
 }
 
 .token-summary p {
@@ -443,9 +518,9 @@ video#webcam {
     width: 100%;
     padding: 12px 14px;
     border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.05);
-    color: #ebf4ff;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-secondary);
 }
 
 .tip-row {
@@ -458,8 +533,8 @@ video#webcam {
     margin-top: 16px;
     padding: 14px;
     border-radius: 16px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--bg-surface-soft);
+    border: 1px solid var(--border-color);
     min-height: 72px;
 }
 
@@ -495,8 +570,8 @@ video#webcam {
     gap: 12px;
     padding: 14px;
     border-radius: 12px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--bg-surface-soft);
+    border: 1px solid var(--border-color);
 }
 
 .account-info {
@@ -541,14 +616,15 @@ video#webcam {
     position: absolute;
     inset: 0;
     background: rgba(3, 6, 12, 0.6);
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
 }
 
 .modal-content {
     position: relative;
     width: min(720px, 94%);
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--bg-surface-strong);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 18px;
     z-index: 2;
@@ -603,11 +679,11 @@ video#webcam {
     position: fixed;
     right: 20px;
     bottom: 20px;
-    background: rgba(40,40,60,0.96);
-    color: #eaf6ff;
+    background: var(--bg-surface-strong);
+    color: var(--text-secondary);
     padding: 12px 16px;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 30px var(--shadow-color);
     z-index: 1300;
     opacity: 0;
     transform: translateY(8px);
@@ -635,12 +711,47 @@ video#webcam {
 .footer-bar {
     padding: 20px 24px;
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: rgba(255, 255, 255, 0.02);
-    color: #a9bedc;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-muted);
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
+.theme-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 999px;
+    background: var(--bg-surface-soft);
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.05);
+}
+
+.theme-btn {
+    border: none;
+    border-radius: 999px;
+    min-width: 42px;
+    height: 36px;
+    padding: 0 10px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+.theme-btn.active {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 980px) {
     .layout-grid {
         grid-template-columns: 1fr;
@@ -661,3 +772,4 @@ video#webcam {
         flex-direction: column;
     }
 }
+

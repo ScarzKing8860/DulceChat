@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DulceChat is a live creator community with private rooms, live chat, and token gifts." />
+    <title>DulceChat | Live rooms</title>
+    <link rel="stylesheet" href="bundle.css" />
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="DulceChat home"><span class="brand-mark">D</span><span>Dulce<span>Chat</span></span></a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="active" href="#discover">Discover</a>
+            <a href="#following">Following</a>
+            <a href="dashboard.html">My studio</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-button" type="button" aria-label="Search">⌕</button>
+            <button class="wallet-button" id="buyTokens" type="button"><span>✦</span> <strong id="tokenBalance">240</strong> tokens <b>+</b></button>
+            <button class="avatar-button" type="button" aria-label="Open profile">AM</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="discover">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="pulse-dot"></span> 1,284 rooms live now</p>
+                <h1>Find your <em>spark.</em></h1>
+                <p class="hero-lede">Real conversations, spontaneous moments, and creators worth staying up for.</p>
+                <div class="hero-meta"><span>18+ community</span><span>•</span><span>Always something live</span></div>
+            </div>
+            <div class="hero-art" aria-hidden="true"><span class="art-ring"></span><span class="art-label">LIVE<br /><b>NOW</b></span></div>
+        </section>
+
+        <section class="room-section" aria-labelledby="live-heading">
+            <div class="section-heading">
+                <div><p class="kicker">Browse rooms</p><h2 id="live-heading">Live right now <span class="count">48</span></h2></div>
+                <div class="filters">
+                    <button class="filter active" data-filter="all" type="button">All rooms</button>
+                    <button class="filter" data-filter="new" type="button">New faces</button>
+                    <button class="filter" data-filter="popular" type="button">Popular</button>
+                </div>
+            </div>
+            <div class="room-grid" id="roomGrid">
+                <article class="room-card featured-room" data-category="popular"><div class="room-image image-one"><span class="live-tag"><i></i> LIVE</span><span class="room-viewers">2.4K watching</span><button class="heart" type="button" aria-label="Favorite Luna">♡</button><div class="room-caption"><strong>Luna in the lounge</strong><span>Late night chats · English</span></div></div><div class="room-info"><div class="creator"><span class="creator-avatar avatar-luna">L</span><div><strong>LunaViolet <span class="verified">✓</span></strong><small>Playful · 24 min live</small></div></div><button class="mini-gift" data-creator="LunaViolet" type="button">✦ Gift</button></div></article>
+                <article class="room-card" data-category="new"><div class="room-image image-two"><span class="live-tag"><i></i> LIVE</span><span class="room-viewers">846 watching</span><button class="heart" type="button" aria-label="Favorite Mila">♡</button><div class="room-caption"><strong>Mila makes music</strong><span>Requests · Spanish</span></div></div><div class="room-info"><div class="creator"><span class="creator-avatar avatar-mila">M</span><div><strong>MilaSol <span class="verified">✓</span></strong><small>Music · 12 min live</small></div></div><button class="mini-gift" data-creator="MilaSol" type="button">✦ Gift</button></div></article>
+                <article class="room-card" data-category="popular"><div class="room-image image-three"><span class="live-tag"><i></i> LIVE</span><span class="room-viewers">1.8K watching</span><button class="heart" type="button" aria-label="Favorite Nia">♡</button><div class="room-caption"><strong>Nia after dark</strong><span>Talk &amp; tease · English</span></div></div><div class="room-info"><div class="creator"><span class="creator-avatar avatar-nia">N</span><div><strong>NiaNoir <span class="verified">✓</span></strong><small>Chill · 1 hr live</small></div></div><button class="mini-gift" data-creator="NiaNoir" type="button">✦ Gift</button></div></article>
+                <article class="room-card" data-category="new"><div class="room-image image-four"><span class="live-tag"><i></i> LIVE</span><span class="room-viewers">392 watching</span><button class="heart" type="button" aria-label="Favorite Jade">♡</button><div class="room-caption"><strong>Jade's cozy corner</strong><span>Good vibes · English</span></div></div><div class="room-info"><div class="creator"><span class="creator-avatar avatar-jade">J</span><div><strong>JadeAfterHours</strong><small>New · 8 min live</small></div></div><button class="mini-gift" data-creator="JadeAfterHours" type="button">✦ Gift</button></div></article>
+            </div>
+        </section>
+
+        <section class="content-layout" id="following">
+            <div class="spotlight"><div><p class="kicker">The room everyone is talking about</p><h2>Make a moment<br /><em>unforgettable.</em></h2><p>Send a gift, get noticed in chat, and help your favorite creator unlock their next goal.</p><button class="primary-button" type="button" data-scroll="roomGrid">Explore live rooms <span>→</span></button></div><div class="spotlight-stat"><strong>18,640</strong><span>tokens gifted today</span></div></div>
+            <aside class="chat-panel"><div class="chat-heading"><div><p class="kicker">Community pulse</p><h3>Live chat</h3></div><span class="online"><i></i> 2,108 online</span></div><div class="chat-messages" id="chatMessages"><p><b class="pink">Mia</b><span>That outfit is everything ✨</span></p><p><b class="gold">Chris</b><span>Sending good energy your way</span></p><p><b class="blue">Leo</b><span>Who else just got here?</span></p><p><b class="pink">Sasha</b><span>🌹🌹🌹</span></p></div><form class="chat-form" id="chatForm"><input id="chatInput" type="text" maxlength="80" placeholder="Say something nice..." autocomplete="off" /><button type="submit" aria-label="Send message">↑</button></form><p class="chat-note">Be kind. This is a 18+ community.</p></aside>
+        </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="bundle.js"></script>
+</body>
+</html>

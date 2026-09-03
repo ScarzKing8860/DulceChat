@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LunaViolet live | DulceChat</title>
+    <link rel="stylesheet" href="bundle.css" />
+</head>
+<body class="subpage room-page">
+    <header class="site-header nav-subpage">
+        <a class="brand" href="index.html"><span class="brand-mark">D</span><span>Dulce<span>Chat</span></span></a>
+        <nav class="main-nav"><a href="index.html">Discover</a><a href="browser.html">Creators</a><a class="active" href="room.html">Live room</a></nav>
+        <div class="header-actions"><button class="wallet-button" id="buyTokens" type="button">✦ <strong id="tokenBalance">240</strong> tokens <b>+</b></button><a class="avatar-button" href="profile.html">AM</a></div>
+    </header>
+    <main class="room-main">
+        <div class="room-topline"><a class="back-link" href="index.html">← All live rooms</a><span class="room-safety">18+ · Respect the room</span></div>
+        <div class="room-layout">
+            <section class="stream-stage">
+                <div class="stage-media"><span class="live-tag"><i></i> LIVE</span><span class="stage-viewers">2,418 watching</span><div class="stage-copy"><p>Late night chats</p><h1>Luna in the lounge</h1><span>Say hi, stay awhile.</span></div><div class="stage-controls"><button type="button" aria-label="Mute room audio">◖</button><button type="button" aria-label="Enter fullscreen">⛶</button></div></div>
+                <div class="creator-bar"><div class="creator"><span class="creator-avatar avatar-luna large-avatar">L</span><div><strong>LunaViolet <span class="verified">✓</span></strong><small>Playful conversations · 24 minutes live</small></div></div><div class="creator-actions"><button class="follow-button" id="followButton" type="button">+ Follow</button><button class="share-button" type="button" aria-label="Share room">↗</button></div></div>
+                <div class="goal-bar"><div><span class="kicker">Room goal</span><strong>New lighting setup</strong></div><div class="goal-progress"><div><span style="width:68%"></span></div><small>6,840 / 10,000 tokens</small></div></div>
+            </section>
+            <aside class="room-chat chat-panel"><div class="chat-heading"><div><p class="kicker">Luna's room</p><h3>Live chat</h3></div><span class="online"><i></i> 2,418</span></div><div class="chat-messages" id="chatMessages"><p><b class="pink">Mia</b><span>That lighting is gorgeous tonight</span></p><p><b class="gold">Chris</b><span>Just sent a little something ✦</span></p><p><b class="blue">Leo</b><span>Hey Luna, happy to catch you live!</span></p><p><b class="pink">Sasha</b><span>🌹🌹🌹</span></p></div><form class="chat-form" id="chatForm"><input id="chatInput" type="text" maxlength="80" placeholder="Say something nice..." autocomplete="off" /><button type="submit" aria-label="Send message">↑</button></form><p class="chat-note">Keep it kind. Report anything that crosses a line.</p></aside>
+        </div>
+        <section class="gift-section"><div><p class="kicker">Make an entrance</p><h2>Send Luna a gift</h2><p class="gift-subtitle">Your gift appears in the room and helps unlock the next goal.</p></div><div class="gift-grid"><button class="gift-option" data-cost="10" data-gift="Rose" type="button"><span>🌹</span><strong>Rose</strong><small>10 tokens</small></button><button class="gift-option" data-cost="25" data-gift="Spark" type="button"><span>✦</span><strong>Spark</strong><small>25 tokens</small></button><button class="gift-option" data-cost="50" data-gift="Crown" type="button"><span>♛</span><strong>Crown</strong><small>50 tokens</small></button><button class="gift-option gift-featured" data-cost="100" data-gift="Bouquet" type="button"><span>💐</span><strong>Bouquet</strong><small>100 tokens</small></button></div></section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="bundle.js"></script>
+</body>
+</html>
